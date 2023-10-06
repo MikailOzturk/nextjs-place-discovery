@@ -1,8 +1,9 @@
 import category from '@/data/category'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 
-const Hero = () => {
+const Hero = ({userInput}:any) => {
+  const [searchInput,setSearchInput]=useState<string>();
   return (
     <div className='text-center'>
       <div>
@@ -24,11 +25,13 @@ const Hero = () => {
             items-center justify-center'
           >
             <input type='text'
+              onChange={(e)=>setSearchInput(e.target.value)}
               placeholder='Search Anything'
               className='bg-white p-3 z-10 border-[1px] rounded-full 
               px-5 w-[36%] shadow-lg outline-red-300'
             />
             <button 
+              onClick={()=>userInput(searchInput)}
               className='bg-red-600 rounded-full
                p-3 shadow-md z-10 
                cursor-pointer hover:scale-105 transition-all'
